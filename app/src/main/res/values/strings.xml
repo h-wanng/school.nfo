@@ -3,4 +3,11 @@
     <string name="title_class">班级</string>
     <string name="title_school">校园</string>
     <string name="title_more">更多</string>
+    <string name="toolbar_add">操作</string>
+    <string name="classpopup_addgroup">创建群组</string>
+    <string name="classpopup_addfriend">添加好友</string>
+    <string name="schoolpopup_addinfo">发布信息</string>
+    <string name="account_edittext_hint">账号</string>
+    <string name="password_edittext_hint">密码</string>
+    <string name="login_btn">登录</string>
 </resources>
