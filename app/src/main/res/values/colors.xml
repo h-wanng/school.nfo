@@ -7,4 +7,11 @@
     <color name="white">#fff</color>
     <color name="splash_text_gray">#33515151</color>
     <color name="popup_gray">#515151</color>
+    <color name="black">#000</color>
+    <color name="gray">#757575</color>
+    <color name="light_gray">#E6E6E6</color>
+
+    <color name="rcolorPrimary">#00B8D8</color>
+    <color name="rcolorPrimaryDark">#00B2D1</color>
+    <color name="rcolorAccent">#C55660</color>
 </resources>

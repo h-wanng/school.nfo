@@ -61,9 +61,9 @@
         android:layout_below="@id/titlebar"
         android:layout_above="@id/navigation"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        >
     </FrameLayout>
-
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/navigation"
         android:layout_width="0dp"

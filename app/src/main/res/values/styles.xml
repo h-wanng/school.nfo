@@ -9,7 +9,14 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
-    <style name="Popwindow">
-        
+
+    <style name="RedsTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/rcolorPrimary</item>
+        <item name="colorPrimaryDark">@color/rcolorPrimaryDark</item>
+        <item name="colorAccent">@color/rcolorAccent</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
     </style>
+
 </resources>

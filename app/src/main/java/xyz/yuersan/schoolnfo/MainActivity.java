@@ -1,28 +1,27 @@
 package xyz.yuersan.schoolnfo;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.WindowManager;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import xyz.yuersan.schoolnfo.util.StatusBarUtil;
-import xyz.yuersan.schoolnfo.util.SystemBarTintManager;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity implements OnClickListener  {
 
     private TextView mTextMessage;
     private ClassFragment classFragment;
@@ -39,6 +38,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private MenuItem itemClass;
     private MenuItem itemSchool;
     private MenuItem itemMore;
+
+    private static final int THEME_DEFAULT = 1;
+    private static final int THEME_OTHER = 2;
+
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -63,10 +66,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             return false;
         }
     };
+    private int theme;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        redrawTheme();
         setContentView(R.layout.activity_main);
         StatusBarUtil.setTranslucentStatus(this);
         StatusBarUtil.setStatusBarDarkTheme(this, true);
@@ -83,10 +89,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         itemClass = navigation.getMenu().findItem(R.id.navigation_class);
         itemSchool = navigation.getMenu().findItem(R.id.navigation_school);
         itemMore = navigation.getMenu().findItem(R.id.navigation_more);
+        initTitleBar();
         navigation.setItemIconTintList(null);
         navigation.getMenu().getItem(0).setIcon(R.drawable.ic_navigation_class);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         toolbarAdd.setOnClickListener(this);
+//        setOnRefreshListener();
     }
 
 
@@ -113,6 +121,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+    /**
+     * 初始化Fragment
+     */
     private void init() {
         classFragment = new ClassFragment();
         schoolFragment = new SchoolFragment();
@@ -122,10 +133,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         transaction.hide(classFragment).hide(schoolFragment).hide(moreFragment);//隐藏fragment
         transaction.commit();//每一个事务最后操作必须是commit()
         showFrag(R.id.navigation_class);
-
-
     }
 
+    /**
+     *通过导航栏点击显示Fragment
+     *
+     * @param navigationItem 导航栏Item
+     */
     private void showFrag(int navigationItem) {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         switch (navigationItem){
@@ -160,6 +174,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
+    /**
+     * 重置导航栏item图标
+     */
     private void resetToDefaultIcon(){
         itemClass.setIcon(R.drawable.ic_navigation_class_gray);
         itemSchool.setIcon(R.drawable.ic_navigation_school_gray);
@@ -201,10 +218,42 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
     }
 
+
     @Override
     public void onClick(View v) {
         if (v == toolbarAdd){
             showPopWindow();
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        redrawTheme();
+        initTitleBar();
+    }
+
+    private void redrawTheme() {
+        SharedPreferences sp = getSharedPreferences("Theme",
+                Context.MODE_PRIVATE);
+        if (sp == null){
+            SharedPreferences.Editor editor = sp.edit();
+            editor.putInt("theme",1);
+            editor.apply();
+        } else {
+            theme = sp.getInt("theme", 1);
+            if (theme == THEME_DEFAULT){
+                setTheme(R.style.AppTheme);
+            } else if (theme == THEME_OTHER){
+                setTheme(R.style.RedsTheme);
+            }
+        }
+    }
+
+    private void initTitleBar() {
+        if (theme == THEME_OTHER)
+            titleBar.setBackgroundResource(R.drawable.rtitlebar);
+        else if(theme == THEME_DEFAULT)
+            titleBar.setBackgroundResource(R.drawable.titlebar);
     }
 }

@@ -1,15 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/school_fragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingTop="8dp"
+    android:paddingStart="10dp"
+    android:paddingEnd="10dp"
     tools:context=".SchoolFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <EditText
+        android:id="@+id/search_schoolnfo"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:inputType="text"
+        android:layout_alignParentTop="true"
+        android:drawableStart="@drawable/ic_search"
+        android:hint="@string/search"
+        android:textCursorDrawable="@color/black"
+        android:gravity="center"
+        android:background="@drawable/rounded_search_edittext"/>
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/school_refreshlayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="School Fragment"
-        android:gravity="center" />
+        android:layout_marginTop="6dp"
+        android:layout_below="@id/search_schoolnfo">
 
-</FrameLayout>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/school_recycleview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </android.support.v7.widget.RecyclerView>
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+</RelativeLayout>

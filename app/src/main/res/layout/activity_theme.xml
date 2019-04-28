@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/titlebar"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/titlebar"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="30dp">
+
+            <ImageView
+                android:id="@+id/back"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:contentDescription="@string/back"
+                android:src="@drawable/ic_back" />
+
+            <TextView
+                android:id="@+id/toolbar_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="15dp"
+                android:layout_toEndOf="@id/back"
+                android:text="@string/theme"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+        </RelativeLayout>
+    </android.support.v7.widget.Toolbar>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/titlebar"
+        android:layout_marginTop="30dp"
+        android:padding="12dp"
+        android:layout_centerHorizontal="true">
+
+        <FrameLayout
+            android:id="@+id/default_theme_frame"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginEnd="8dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?android:attr/selectableItemBackground">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+                android:contentDescription="@string/themedefault"
+                android:src="@drawable/theme_default_sample" />
+
+            <CheckBox
+                android:id="@+id/checkbox_theme_default"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="false"
+                android:focusable="false"
+                android:layout_margin="7dp"
+                android:layout_gravity="bottom"/>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center">
+
+                <TextView
+                    android:id="@+id/default_primary_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/default_theme_en"
+                    android:textColor="@color/colorPrimary"
+                    android:shadowColor="#ff000000"
+                    android:shadowRadius="7"
+                    android:shadowDx="7"
+                    android:shadowDy="5"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/default_primary_text"
+                    android:layout_centerHorizontal="true"
+                    android:text="@string/default_theme_zh"
+                    android:textColor="@color/colorAccent"
+                    android:shadowColor="#ff000000"
+                    android:shadowRadius="7"
+                    android:shadowDx="7"
+                    android:shadowDy="5"/>
+            </RelativeLayout>
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/other_theme_frame"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?android:attr/selectableItemBackground">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+                android:contentDescription="@string/themeother"
+                android:src="@drawable/theme_other_sample" />
+
+            <CheckBox
+                android:id="@+id/checkbox_theme_other"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="false"
+                android:focusable="false"
+                android:layout_margin="7dp"
+                android:layout_gravity="bottom"/>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center">
+
+                <TextView
+                    android:id="@+id/default_rprimary_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/other_theme_en"
+                    android:textColor="@color/rcolorPrimaryDark"
+                    android:shadowColor="#ff000000"
+                    android:shadowRadius="7"
+                    android:shadowDx="7"
+                    android:shadowDy="5"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/default_rprimary_text"
+                    android:layout_centerHorizontal="true"
+                    android:text="@string/other_theme_zh"
+                    android:textColor="@color/rcolorAccent"
+                    android:shadowColor="#ff000000"
+                    android:shadowRadius="7"
+                    android:shadowDx="7"
+                    android:shadowDy="5"/>
+            </RelativeLayout>
+        </FrameLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

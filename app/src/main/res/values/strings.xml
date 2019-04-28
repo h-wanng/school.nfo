@@ -10,4 +10,20 @@
     <string name="account_edittext_hint">账号</string>
     <string name="password_edittext_hint">密码</string>
     <string name="login_btn">登录</string>
+    <string name="search">搜索</string>
+    <string name="profile_forward">查看编辑资料</string>
+    <string name="userprofile_card_hint">查看/编辑资料</string>
+    <string name="student_grade">学生成绩</string>
+    <string name="studentfile">学生档案</string>
+    <string name="studentgrade">学生成绩</string>
+    <string name="studentaward">学生奖惩</string>
+    <string name="theme">主题风格</string>
+    <string name="setting">设置</string>
+    <string name="back">返回</string>
+    <string name="themedefault">默认主题</string>
+    <string name="themeother">其他主题</string>
+    <string name="default_theme_zh">默认主题</string>
+    <string name="default_theme_en">Default Theme</string>
+    <string name="other_theme_en">Other Theme</string>
+    <string name="other_theme_zh">其他主题</string>
 </resources>
